@@ -9,7 +9,9 @@ url: https://maang.in/problems/Easy-Graph-Queries-400
 
 ## Problem
 
-Given an undirected graph with N nodes and M edges, answer Q queries:
+You are given an undirected graph G with N nodes and M edges. You have to answer Q queries. Each query is one of the following two types:
+- Type 1: `1 X` — print the size of the connected component containing node X.
+- Type 2: `2 X Y` — print YES if nodes X and Y are in the same connected component, otherwise print NO.
 - Type 1: `1 X` — print size of connected component containing node X
 - Type 2: `2 X Y` — print YES if X and Y are in the same component, else NO
 
