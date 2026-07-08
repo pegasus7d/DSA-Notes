@@ -77,18 +77,18 @@ Course page didn't reveal any coding-problem items on this pass (6 total items, 
 ### Binary Tree Mastery — Not started (0/23 solved)
 **Remaining (23):** Inorder Traversal, Preorder Traversal, Postorder Traversal, Level Order Traversal, ZigZag Level Order Traversal, IsBst, Mirror Tree, Root to leaf path sum, Vertical Order Traversal, Diagonal Level Order Traversal, Tree from inorder and postorder, Tree from inorder and preorder, Boundary Traversal, Median of BST, Kth element of BST, Inorder Successor in BST, BBST LCA, Merge Two Binary Tree, Isomorphic Tree, Shortest Range in a BST, Self Balancing, Leaves Removal, K Distance Nodes
 
-### Linked List Atomic Techniques — In progress (14/16 solved)
-**Remaining (2):** Copy List with Random Pointer, Piles of stones
+### Linked List Atomic Techniques — In progress (15/16 solved)
+**Remaining (1):** Piles of stones
 
 ---
 
 ## Currently Active
 **Graph Level 2** — next problem: **Weighted Union Find Trees**.
-**Linked List Atomic Techniques** — next problem: **Copy List with Random Pointer**.
+**Linked List Atomic Techniques** — next problem: **Piles of stones** (last one in this course!).
 
 ## Totals
-**120 unique problems solved and documented** — Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 14 (see [README.md](README.md) for the full clickable list)
+**121 unique problems solved and documented** — Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 15 (see [README.md](README.md) for the full clickable list)
 
-Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~124 solved-on-platform (slightly more than 120 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~135 remaining**. This total will grow once Square Root Decomposition and DP Level 1 are fully explored (see below).
+Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~125 solved-on-platform (slightly more than 121 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~134 remaining**. This total will grow once Square Root Decomposition and DP Level 1 are fully explored (see below).
 
 *Verified directly against the AlgoZenith site's per-problem completion badges (not just video-inclusive "% complete", and not just note-file counts) for every course listed above. Two exceptions: **DP Level 1** (accordion not fully expanded, likely undercounted) and **Square Root Decomposition** (no problems detected on this pass — needs a manual check).*
