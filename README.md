@@ -168,10 +168,12 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 - [Piles of stones](Phase-5/Linked-List/Piles-of-stones.md)
 
 ### Square Root Decomposition — not started
-### Binary Tree Mastery — not started
+
+### [Binary Tree Mastery](Phase-5/Binary-Tree) — 1 solved
+- [Inorder Traversal](Phase-5/Binary-Tree/Inorder-Traversal.md)
 
 ---
 
-**Total solved: 122** (Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 16)
+**Total solved: 123** (Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 17)
 
 Counts reflect files in this vault, not the platform's "% complete" (which also counts video lectures).
