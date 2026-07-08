@@ -149,7 +149,7 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 
 ## Phase 5 — Specialist Topics
 
-### [Linked List Atomic Techniques](Phase-5/Linked-List) — 15 solved
+### [Linked List Atomic Techniques](Phase-5/Linked-List) — 16 solved (complete)
 - [Rotate List](Phase-5/Linked-List/Rotate-List.md)
 - [Remove Nth Node From End](Phase-5/Linked-List/Remove-Nth-Node-From-End.md)
 - [Remove Duplicates](Phase-5/Linked-List/Remove-Duplicates.md)
@@ -165,12 +165,13 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 - [Reorder List II](Phase-5/Linked-List/Reorder-List-II.md)
 - [Intersection of K Lists](Phase-5/Linked-List/Intersection-of-K-Lists.md)
 - [Copy List with Random Pointer](Phase-5/Linked-List/Copy-List-with-Random-Pointer.md)
+- [Piles of stones](Phase-5/Linked-List/Piles-of-stones.md)
 
 ### Square Root Decomposition — not started
 ### Binary Tree Mastery — not started
 
 ---
 
-**Total solved: 121** (Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 15)
+**Total solved: 122** (Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 16)
 
 Counts reflect files in this vault, not the platform's "% complete" (which also counts video lectures).
