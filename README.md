@@ -147,11 +147,16 @@ Click any problem name below to open its note directly.
 ## Phase 4 — Advanced DSA — not started
 Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find Trees)** · DP with Bitmasking · DP Level 2 · Greedy & Sweep Line
 
-## Phase 5 — Specialist Topics — not started
-Square Root Decomposition · Binary Tree Mastery · Linked List Atomic Techniques
+## Phase 5 — Specialist Topics
+
+### [Linked List Atomic Techniques](Phase-5/Linked-List) — 1 solved
+- [Rotate List](Phase-5/Linked-List/Rotate-List.md)
+
+### Square Root Decomposition — not started
+### Binary Tree Mastery — not started
 
 ---
 
-**Total solved: 106** (Phase 1: 48 · Phase 2: 25 · Phase 3: 34)
+**Total solved: 107** (Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 1)
 
 Counts reflect files in this vault, not the platform's "% complete" (which also counts video lectures).
