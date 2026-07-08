@@ -74,19 +74,18 @@ Not fully explored yet (course has more topics than scanned so far); at least on
 ### Square Root Decomposition — Not started
 Course page didn't reveal any coding-problem items on this pass (6 total items, all appear to be videos) — needs a manual check, may be undercounted.
 
-### Binary Tree Mastery — In progress (22/23 solved)
-**Remaining (1):** K Distance Nodes
+### Binary Tree Mastery — ✅ Complete (23/23 solved)
 
 ### Linked List Atomic Techniques — ✅ Complete (16/16 solved)
 
 ---
 
 ## Currently Active
-**Binary Tree Mastery** — next problem: **K Distance Nodes** (the last one in this course!). (Linked List Atomic Techniques is fully complete — 16/16. Graph Level 2 remains at 0/5, next: Weighted Union Find Trees, whenever picked back up.)
+**Binary Tree Mastery is now ✅ fully complete (23/23)**, alongside Linked List Atomic Techniques (16/16). No course is currently "active" — next pick-up point (whenever resumed) is likely **Graph Level 2**, which remains at 0/5, next problem: Weighted Union Find Trees.
 
 ## Totals
-**144 unique problems solved and documented** — Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 38 (see [README.md](README.md) for the full clickable list)
+**145 unique problems solved and documented** — Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 39 (see [README.md](README.md) for the full clickable list)
 
-Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~148 solved-on-platform (slightly more than 144 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~111 remaining**. This total will grow once Square Root Decomposition and DP Level 1 are fully explored (see below).
+Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~149 solved-on-platform (slightly more than 145 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~110 remaining**. This total will grow once Square Root Decomposition and DP Level 1 are fully explored (see below).
 
 *Verified directly against the AlgoZenith site's per-problem completion badges (not just video-inclusive "% complete", and not just note-file counts) for every course listed above. Two exceptions: **DP Level 1** (accordion not fully expanded, likely undercounted) and **Square Root Decomposition** (no problems detected on this pass — needs a manual check).*
