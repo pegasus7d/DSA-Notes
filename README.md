@@ -169,7 +169,7 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 
 ### Square Root Decomposition — not started
 
-### [Binary Tree Mastery](Phase-5/Binary-Tree) — 20 solved
+### [Binary Tree Mastery](Phase-5/Binary-Tree) — 21 solved
 - [Inorder Traversal](Phase-5/Binary-Tree/Inorder-Traversal.md)
 - [Preorder Traversal](Phase-5/Binary-Tree/Preorder-Traversal.md)
 - [Postorder Traversal](Phase-5/Binary-Tree/Postorder-Traversal.md)
@@ -190,9 +190,10 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 - [Merge Two Binary Tree](Phase-5/Binary-Tree/Merge-Two-Binary-Tree.md)
 - [Isomorphic Tree](Phase-5/Binary-Tree/Isomorphic-Tree.md)
 - [Shortest Range in a BST](Phase-5/Binary-Tree/Shortest-Range-in-a-BST.md)
+- [Self Balancing](Phase-5/Binary-Tree/Self-Balancing.md)
 
 ---
 
-**Total solved: 142** (Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 36)
+**Total solved: 143** (Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 37)
 
 Counts reflect files in this vault, not the platform's "% complete" (which also counts video lectures).
