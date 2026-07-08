@@ -42,8 +42,8 @@ Pure theory/video course, no coding problems.
 **Remaining (6):** Sum of Distances ⚠️, Tree Diameter - II, Min Edge Weight, LCA Twist, Path GCD, Partial Sum on Tree
 *(⚠️ You have a note for "Sum of Distances" but the platform doesn't show it as completed — worth re-checking/resubmitting that one.)*
 
-### DP Level 1: Framework and Simpler Forms — In progress (2 solved so far)
-**Solved:** Climbing Stairs, Subset Sum Queries. Course has 3 chapters with many more topics/problems (Knapsack style, LCS variants, grid DP, interval DP, game DP) not yet fully catalogued — working through it one problem at a time rather than all at once this time.
+### DP Level 1: Framework and Simpler Forms — In progress (3 solved so far)
+**Solved:** Climbing Stairs, Subset Sum Queries, LCS of 3 Strings. Course has 3 chapters with many more topics/problems (Knapsack style, LCS variants, grid DP, interval DP, game DP) not yet fully catalogued — working through it one problem at a time rather than all at once this time.
 
 ---
 
@@ -80,11 +80,11 @@ Course page didn't reveal any coding-problem items on this pass (6 total items, 
 ---
 
 ## Currently Active
-**DP Level 1: Framework and Simpler Forms** — in progress, going one problem at a time (2 solved: Climbing Stairs, Subset Sum Queries). Binary Tree Mastery (23/23), Linked List Atomic Techniques (16/16), and Maths for Programming (2/2) are all ✅ fully complete.
+**DP Level 1: Framework and Simpler Forms** — in progress, going one problem at a time (3 solved: Climbing Stairs, Subset Sum Queries, LCS of 3 Strings). Binary Tree Mastery (23/23), Linked List Atomic Techniques (16/16), and Maths for Programming (2/2) are all ✅ fully complete.
 
 ## Totals
-**149 unique problems solved and documented** — Phase 1: 50 · Phase 2: 25 · Phase 3: 36 · Phase 5: 39 (see [README.md](README.md) for the full clickable list)
+**150 unique problems solved and documented** — Phase 1: 50 · Phase 2: 25 · Phase 3: 37 · Phase 5: 39 (see [README.md](README.md) for the full clickable list)
 
-Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~153 solved-on-platform (slightly more than 149 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~106 remaining**. This total will grow once Square Root Decomposition and the rest of DP Level 1 are fully explored (see below).
+Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~154 solved-on-platform (slightly more than 150 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~105 remaining**. This total will grow once Square Root Decomposition and the rest of DP Level 1 are fully explored (see below).
 
 *Verified directly against the AlgoZenith site's per-problem completion badges (not just video-inclusive "% complete", and not just note-file counts) for every course listed above. Two exceptions: **DP Level 1** (accordion not fully expanded, likely undercounted) and **Square Root Decomposition** (no problems detected on this pass — needs a manual check).*
