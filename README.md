@@ -143,11 +143,12 @@ Click any problem name below to open its note directly.
 - [Sum of Distances](Phase-3/Trees/Sum-of-Distances.md)
 - [Tree Diameter I](Phase-3/Trees/Tree-Diameter-I.md)
 
-### [DP Level 1: Framework and Simpler Forms](Phase-3/DP-Level-1) — 4 solved
+### [DP Level 1: Framework and Simpler Forms](Phase-3/DP-Level-1) — 5 solved
 - [Climbing Stairs](Phase-3/DP-Level-1/Climbing-Stairs.md)
 - [Subset Sum Queries](Phase-3/DP-Level-1/Subset-Sum-Queries.md)
 - [LCS of 3 Strings](Phase-3/DP-Level-1/LCS-of-3-Strings.md)
 - [Count LIS](Phase-3/DP-Level-1/Count-LIS.md)
+- [Maximum Area of Square](Phase-3/DP-Level-1/Maximum-Area-of-Square.md)
 
 ---
 
@@ -203,6 +204,6 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 
 ---
 
-**Total solved: 151** (Phase 1: 50 · Phase 2: 25 · Phase 3: 38 · Phase 5: 39)
+**Total solved: 152** (Phase 1: 50 · Phase 2: 25 · Phase 3: 39 · Phase 5: 39)
 
 Counts reflect files in this vault, not the platform's "% complete" (which also counts video lectures).
