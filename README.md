@@ -143,7 +143,9 @@ Click any problem name below to open its note directly.
 - [Sum of Distances](Phase-3/Trees/Sum-of-Distances.md)
 - [Tree Diameter I](Phase-3/Trees/Tree-Diameter-I.md)
 
-### DP Level 1: Framework and Simpler Forms — not started
+### [DP Level 1: Framework and Simpler Forms](Phase-3/DP-Level-1) — 2 solved
+- [Climbing Stairs](Phase-3/DP-Level-1/Climbing-Stairs.md)
+- [Subset Sum Queries](Phase-3/DP-Level-1/Subset-Sum-Queries.md)
 
 ---
 
@@ -199,6 +201,6 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 
 ---
 
-**Total solved: 147** (Phase 1: 50 · Phase 2: 25 · Phase 3: 34 · Phase 5: 39)
+**Total solved: 149** (Phase 1: 50 · Phase 2: 25 · Phase 3: 36 · Phase 5: 39)
 
 Counts reflect files in this vault, not the platform's "% complete" (which also counts video lectures).
