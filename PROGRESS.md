@@ -77,18 +77,18 @@ Course page didn't reveal any coding-problem items on this pass (6 total items, 
 ### Binary Tree Mastery — Not started (0/23 solved)
 **Remaining (23):** Inorder Traversal, Preorder Traversal, Postorder Traversal, Level Order Traversal, ZigZag Level Order Traversal, IsBst, Mirror Tree, Root to leaf path sum, Vertical Order Traversal, Diagonal Level Order Traversal, Tree from inorder and postorder, Tree from inorder and preorder, Boundary Traversal, Median of BST, Kth element of BST, Inorder Successor in BST, BBST LCA, Merge Two Binary Tree, Isomorphic Tree, Shortest Range in a BST, Self Balancing, Leaves Removal, K Distance Nodes
 
-### Linked List Atomic Techniques — In progress (3/16 solved)
-**Remaining (13):** Add Two Numbers, Reverse List - easy version, Reverse List - hard version, Intersection of Two Lists, Middle of the Linked List, Reorder List I, Cycle in Linked List, Merge Sort on Linked List, Merge K Sorted Lists, Reorder List II, Intersection of K Lists, Copy List with Random Pointer, Piles of stones
+### Linked List Atomic Techniques — In progress (6/16 solved)
+**Remaining (10):** Intersection of Two Lists, Middle of the Linked List, Reorder List I, Cycle in Linked List, Merge Sort on Linked List, Merge K Sorted Lists, Reorder List II, Intersection of K Lists, Copy List with Random Pointer, Piles of stones
 
 ---
 
 ## Currently Active
 **Graph Level 2** — next problem: **Weighted Union Find Trees**.
-**Linked List Atomic Techniques** — next problem: **Add Two Numbers**.
+**Linked List Atomic Techniques** — next problem: **Intersection of Two Lists**.
 
 ## Totals
-**109 unique problems solved and documented** — Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 3 (see [README.md](README.md) for the full clickable list)
+**112 unique problems solved and documented** — Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 6 (see [README.md](README.md) for the full clickable list)
 
-Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~113 solved-on-platform (slightly more than 109 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~146 remaining**. This total will grow once Square Root Decomposition and DP Level 1 are fully explored (see below).
+Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~116 solved-on-platform (slightly more than 112 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~143 remaining**. This total will grow once Square Root Decomposition and DP Level 1 are fully explored (see below).
 
 *Verified directly against the AlgoZenith site's per-problem completion badges (not just video-inclusive "% complete", and not just note-file counts) for every course listed above. Two exceptions: **DP Level 1** (accordion not fully expanded, likely undercounted) and **Square Root Decomposition** (no problems detected on this pass — needs a manual check).*

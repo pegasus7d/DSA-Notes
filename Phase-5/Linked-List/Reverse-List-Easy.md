@@ -2,21 +2,21 @@
 tags: [linked-list]
 date: 2026-07-08
 status: Solved
-url: https://maang.in/problems/Remove-Duplicates-532
+url: https://maang.in/problems/Reverse-List-easy-version-533
 ---
 
-# Remove Duplicates
+# Reverse List - easy version
 
 ## Problem
 
-Given a sorted singly linked list, delete duplicates so each value appears only once. Complete `ListNode* deleteDuplicates(ListNode* head)`.
+Given a singly linked list, reverse it and return the new head. Complete `ListNode* reverseList(ListNode* head)`.
 
 **Input Format**
 - Line 1: n — number of nodes
-- Line 2: n space-separated node values (list is guaranteed sorted)
+- Line 2: n space-separated node values
 
 **Output Format**
-- Resulting list's node values, space-separated
+- Reversed list's node values, space-separated
 
 **Constraints**
 - 0 ≤ Length of the linked list ≤ 10^6
@@ -26,25 +26,25 @@ Given a sorted singly linked list, delete duplicates so each value appears only 
 
 **Input 1:**
 ```
-3
-1 1 2
+1
+1
 ```
-**Output 1:** `1 2`
+**Output 1:** `1`
 
 **Input 2:**
 ```
-6
-1 1 1 2 3 3
+5
+1 2 3 4 5
 ```
-**Output 2:** `1 2 3`
+**Output 2:** `5 4 3 2 1`
 
 ## Key Insight ⚡
 
-Since the list is sorted, duplicates are always adjacent. Walk the list with a single pointer `cur`: whenever `cur->val == cur->next->val`, unlink and delete the duplicate node without advancing; otherwise move `cur` forward.
+Classic iterative pointer-reversal: keep a `prev` pointer (initially null), and for each node, save its `next`, point it backward to `prev`, then advance both `prev` and `head`. Single pass, no extra memory.
 
 ## Complexity
 
-O(n) time, O(1) extra space, single pass.
+O(n) time, O(1) extra space.
 
 ## Code
 
@@ -66,18 +66,15 @@ public:
     void setNext(ListNode* nxt) { next = nxt; }
 };
 
-ListNode* deleteDuplicates(ListNode* head) {
-    ListNode* cur = head;
-    while (cur && cur->getNext()) {
-        if (cur->getVal() == cur->getNext()->getVal()) {
-            ListNode* dup = cur->getNext();
-            cur->setNext(dup->getNext());
-            delete dup;
-        } else {
-            cur = cur->getNext();
-        }
+ListNode* reverseList(ListNode* head) {
+    ListNode* prev = nullptr;
+    while (head) {
+        ListNode* nxt = head->getNext();
+        head->setNext(prev);
+        prev = head;
+        head = nxt;
     }
-    return head;
+    return prev;
 }
 
 ListNode* GetList(vector<int>& num) {
@@ -97,7 +94,7 @@ int main() {
     for (auto &x : num) cin >> x;
 
     ListNode* head = GetList(num);
-    head = deleteDuplicates(head);
+    head = reverseList(head);
 
     while (head) {
         cout << head->getVal();

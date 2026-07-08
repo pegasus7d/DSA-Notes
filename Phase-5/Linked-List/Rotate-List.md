@@ -11,6 +11,19 @@ url: https://maang.in/problems/Rotate-List-529
 
 Given a singly linked list, rotate the list to the right by `K` places. Complete `ListNode* rotateList(ListNode* head, int K)`.
 
+**Input Format**
+- Line 1: n — length of the linked list
+- Line 2: n space-separated node values
+- Line 3: K
+
+**Output Format**
+- The rotated list's node values, space-separated
+
+**Constraints**
+- 0 ≤ Length of the linked list ≤ 10^6
+- 0 ≤ K ≤ 10^9
+- 0 ≤ Value stored in node ≤ 10^9
+
 ## Sample Test Cases
 
 **Input 1:**
@@ -25,9 +38,17 @@ Given a singly linked list, rotate the list to the right by `K` places. Complete
 ```
 3
 1 2 3
+6
+```
+**Output 2:** `1 2 3` (K mod n = 0, list unchanged)
+
+**Input 3:**
+```
+3
+1 2 3
 1
 ```
-**Output 2:** `3 1 2`
+**Output 3:** `3 1 2`
 
 ## Key Insight ⚡
 

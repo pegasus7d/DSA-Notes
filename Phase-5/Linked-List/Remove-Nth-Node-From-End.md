@@ -11,6 +11,19 @@ url: https://maang.in/problems/Remove-Nth-Node-From-End-530
 
 Given a non-empty singly linked list, remove the `N`th node from the end and return the head, in one pass.
 
+**Input Format**
+- Line 1: n — number of nodes
+- Line 2: n space-separated node values
+- Line 3: N — which node from the end to remove
+
+**Output Format**
+- Resulting list's node values, space-separated
+
+**Constraints**
+- 1 ≤ Length of the linked list ≤ 10^6
+- 1 ≤ N ≤ Length of the linked list
+- 0 ≤ Value stored in nodes ≤ 10^9
+
 ## Sample Test Cases
 
 **Input 1:**
@@ -19,7 +32,7 @@ Given a non-empty singly linked list, remove the `N`th node from the end and ret
 1 2 3
 1
 ```
-**Output 1:** `1 2`
+**Output 1:** `1 2` (removes last node, value 3)
 
 **Input 2:**
 ```
@@ -27,7 +40,15 @@ Given a non-empty singly linked list, remove the `N`th node from the end and ret
 1 2 3 4
 4
 ```
-**Output 2:** `2 3 4`
+**Output 2:** `2 3 4` (removes head node, value 1)
+
+**Input 3:**
+```
+4
+1 2 3 4
+3
+```
+**Output 3:** `1 3 4` (removes node with value 2)
 
 ## Key Insight ⚡
 
