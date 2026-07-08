@@ -59,7 +59,10 @@ Click any problem name below to open its note directly.
 - [Vector AZ101](Phase-1/STL/Vector-AZ101.md)
 
 ### Time Complexity Series — not started
-### Maths for Programming — not started
+
+### [Maths for Programming](Phase-1/Maths-for-Programming) — ✅ Complete (2/2 solved)
+- [Exponentiation AZ101](Phase-1/Maths-for-Programming/Exponentiation-AZ101.md)
+- [Solve the Equation](Phase-1/Maths-for-Programming/Solve-the-Equation.md)
 
 ---
 
@@ -196,6 +199,6 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 
 ---
 
-**Total solved: 145** (Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 39)
+**Total solved: 147** (Phase 1: 50 · Phase 2: 25 · Phase 3: 34 · Phase 5: 39)
 
 Counts reflect files in this vault, not the platform's "% complete" (which also counts video lectures).

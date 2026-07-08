@@ -15,8 +15,7 @@ Pure theory/video course, no coding problems.
 ### STL in C++ — In progress (47/60 solved)
 **Remaining (13):** LRU Cache, LFU Cache, Stack Increments, ADDMUL, Product of the Last K numbers, Snapshot Array, SUMPAIR, FMBQUEUE, Circular Queue, Circular Deque, All One, Word Dictionary, Search Suggestions System
 
-### Maths for Programming — Not started (0/2 solved)
-**Remaining (2):** Exponentiation AZ101, Solve the Equation
+### Maths for Programming — ✅ Complete (2/2 solved)
 
 ---
 
@@ -81,11 +80,11 @@ Course page didn't reveal any coding-problem items on this pass (6 total items, 
 ---
 
 ## Currently Active
-**Binary Tree Mastery is now ✅ fully complete (23/23)**, alongside Linked List Atomic Techniques (16/16). No course is currently "active" — next pick-up point (whenever resumed) is likely **Graph Level 2**, which remains at 0/5, next problem: Weighted Union Find Trees.
+**Binary Tree Mastery (23/23)**, **Linked List Atomic Techniques (16/16)**, and **Maths for Programming (2/2)** are all now ✅ fully complete. No course is currently "active" — next pick-up point (whenever resumed) is likely **Graph Level 2**, which remains at 0/5, next problem: Weighted Union Find Trees.
 
 ## Totals
-**145 unique problems solved and documented** — Phase 1: 48 · Phase 2: 25 · Phase 3: 34 · Phase 5: 39 (see [README.md](README.md) for the full clickable list)
+**147 unique problems solved and documented** — Phase 1: 50 · Phase 2: 25 · Phase 3: 34 · Phase 5: 39 (see [README.md](README.md) for the full clickable list)
 
-Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~149 solved-on-platform (slightly more than 145 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~110 remaining**. This total will grow once Square Root Decomposition and DP Level 1 are fully explored (see below).
+Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~151 solved-on-platform (slightly more than 147 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~108 remaining**. This total will grow once Square Root Decomposition and DP Level 1 are fully explored (see below).
 
 *Verified directly against the AlgoZenith site's per-problem completion badges (not just video-inclusive "% complete", and not just note-file counts) for every course listed above. Two exceptions: **DP Level 1** (accordion not fully expanded, likely undercounted) and **Square Root Decomposition** (no problems detected on this pass — needs a manual check).*
