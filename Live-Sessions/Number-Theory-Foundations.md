@@ -31,20 +31,22 @@ GCD is associative, so `gcd(a,b,c,...) = gcd(gcd(gcd(a,b),c),...)` — fold pair
 ## 2. LCM
 
 ```cpp
-int lcm(int a, int b) {
+long long lcm(long long a, long long b) {
     return a / gcd(a, b) * b;
 }
 ```
 
 Relationship: `lcm(a,b) = (a × b) / gcd(a,b)`. Written as `a / gcd(a,b) * b` (divide first, then multiply) rather than `a * b / gcd(a,b)`, to reduce overflow risk on large inputs.
 
+**Bug fixed:** `lcm` must return/take `long long`, not `int` — even with the divide-first ordering, the result `a/gcd(a,b) * b` can still overflow a 32-bit `int` for realistic inputs (e.g. two coprime ~5-6 digit numbers, like `99991` and `99989`, give an LCM near `1e10`), silently wrapping to a wrong (possibly negative) value.
+
 ### LCM of an array
 
 Same fold pattern as GCD:
 
 ```cpp
-int arrgcd = arr[0];
-int arrlcm = arr[0];
+long long arrgcd = arr[0];
+long long arrlcm = arr[0];
 for (int i = 1; i < n; i++) {
     arrgcd = gcd(arrgcd, arr[i]);
     arrlcm = lcm(arrlcm, arr[i]);

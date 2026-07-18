@@ -102,17 +102,19 @@ nCr = [n × (n-1) × ... × (n-r+1)] / r! = Π_{i=0}^{r-1} (n-i) / r!
 ```
 
 ```cpp
-int ncr(int n, int r) {
+long long ncr(long long n, long long r) {
     r = min(r, n - r);
 
-    int ans = 1;                // starts at 1, representing C(n,0)
-    for (int i = 0; i < r; i++) {
+    long long ans = 1;                // starts at 1, representing C(n,0)
+    for (long long i = 0; i < r; i++) {
         ans = ans * (n - i);
         ans = ans / (i + 1);
     }
     return ans;
 }
 ```
+
+**Bug fixed:** `ans` (and `n`/`r`) need to be `long long`, not `int` — `C(n,r)` grows fast enough that even moderately-sized `n` (e.g. `C(34,17) ≈ 2.33e9`) overflows a 32-bit `int`, silently producing a wrong value despite the whole point of this method being to "avoid overflow."
 
 **Why multiply-then-divide immediately (not compute the full numerator, then divide by `r!` at the end)?** Because of the recurrence `C(n, k+1) = C(n, k) × (n-k) / (k+1)` — at every step, `ans` holds a genuine binomial coefficient (`C(n,0)`, then `C(n,1)`, then `C(n,2)`, ...), and each of those divisions is guaranteed to be exact (binomial coefficients are always integers). This keeps intermediate values small and avoids overflow that a naive "compute full numerator product first" approach would risk for large `n`.
 
@@ -125,9 +127,9 @@ Mentioned as a second approach — build a Pascal's-triangle-style DP table usin
 Best for competitive programming where answers are required `% mod` and there are many queries. Relies on [[Maths#2. Modular Multiplicative Inverse — `inv(a, mod)`|inv()]], which itself relies on binary exponentiation — this is the payoff for learning that technique first in the session.
 
 ```cpp
-int mod = 1e9 + 7;
+long long mod = 1e9 + 7;
 
-int fact[1000100];
+long long fact[1000100];
 void pre() {
     fact[0] = 1;
     for (int i = 1; i <= 1000000; i++) {
@@ -135,13 +137,15 @@ void pre() {
     }
 }
 
-int ncr(int n, int r) {
-    int num = fact[n];
-    int den = (fact[n-r] * fact[r]) % mod;
-    int ans = (num * inv(den, mod)) % mod;
+long long ncr(int n, int r) {
+    long long num = fact[n];
+    long long den = (fact[n-r] * fact[r]) % mod;
+    long long ans = (num * inv(den, mod)) % mod;
     return ans;
 }
 ```
+
+**Bug fixed:** `fact`/`mod`/`ans` need to be `long long`. With `int`, `fact[i-1] * i` and `fact[n-r] * fact[r]` are ~1e9-scale values multiplied before the `% mod`, overflowing 32-bit `int` (products up to ~1e15–1e18) and silently corrupting every `nCr` result for all but the smallest inputs.
 
 Factorials are precomputed once in `O(max_n)`, so every subsequent `nCr` query is `O(log mod)` — the cost of the `inv()` call. Since normal division isn't defined under a modulus, `inv(den, mod)` (modular multiplicative inverse, via Fermat's Little Theorem) stands in for dividing by `den`.
 

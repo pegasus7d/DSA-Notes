@@ -42,7 +42,7 @@ For each test case, output the minimal maximum separation between any two consec
 100 200 230
 11 10
 1 3 5 7 9 11 13 15 17 19 21
-2 5
+3 5
 7 8 10
 ```
 
@@ -52,7 +52,7 @@ For each test case, output the minimal maximum separation between any two consec
 3
 34
 1
-4
+1
 ```
 
 ## Code

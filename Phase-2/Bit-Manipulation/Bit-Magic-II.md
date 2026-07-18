@@ -20,7 +20,7 @@ Cast to `unsigned long long` for all bit operations — handles negatives (two's
 | 64-bit binary | print bits 63..0 of `(unsigned long long)n` |
 | MSB position | `63 - __builtin_clzll(un)`, or -1 if n=0 |
 | Rightmost set bit | `__builtin_ctzll(un)`, or -1 if n=0 |
-| Power of 2 (x>0) | `n > 1 && (n & (n-1)) == 0` |
+| Power of 2 (x>0) | `n > 0 && (n & (n-1)) == 0` |
 | Biggest 2^k divisor | `n & -n`, or -1 if n=0 |
 | Smallest 2^k ≥ n (k>0) | if n≤1 → 2; if already power of 2 → n; else `1LL << (64 - clzll(un))` |
 
@@ -44,7 +44,7 @@ void solve() {
     if(n == 0) cout << -1 << "\n";
     else cout << __builtin_ctzll(un) << "\n";
 
-    cout << (n > 1 && (n & (n - 1)) == 0 ? 1 : 0) << "\n";
+    cout << (n > 0 && (n & (n - 1)) == 0 ? 1 : 0) << "\n";
 
     if(n == 0) cout << -1 << "\n";
     else cout << (n & -n) << "\n";

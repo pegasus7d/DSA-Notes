@@ -41,7 +41,7 @@ Given an array of N integers A. The score of a subarray is the sum of all elemen
 ```
 3
 5
-5
+4
 ```
 
 ## Code

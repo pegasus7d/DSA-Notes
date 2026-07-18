@@ -83,8 +83,8 @@ Course page didn't reveal any coding-problem items on this pass (6 total items, 
 **DP Level 1: Framework and Simpler Forms** — in progress, going one problem at a time (5 solved: Climbing Stairs, Subset Sum Queries, LCS of 3 Strings, Count LIS, Maximum Area of Square). Binary Tree Mastery (23/23), Linked List Atomic Techniques (16/16), and Maths for Programming (2/2) are all ✅ fully complete.
 
 ## Totals
-**152 unique problems solved and documented** — Phase 1: 50 · Phase 2: 25 · Phase 3: 39 · Phase 5: 39 (see [README.md](README.md) for the full clickable list)
+**153 unique problems solved and documented** — Phase 1: 50 · Phase 2: 25 · Phase 3: 39 · Phase 5: 39 (see [README.md](README.md) for the full clickable list)
 
-Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~156 solved-on-platform (slightly more than 152 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~103 remaining**. This total will grow once Square Root Decomposition and the rest of DP Level 1 are fully explored (see below).
+Across the **entire curriculum** (every course above, solved + remaining): roughly **259 coding problems identified so far**, ~156 solved-on-platform (slightly more than 153 because a handful of problems — e.g. "Interesting Game", "Maximum in Window" — are shared across multiple courses and only documented once), leaving **~103 remaining**. This total will grow once Square Root Decomposition and the rest of DP Level 1 are fully explored (see below).
 
 *Verified directly against the AlgoZenith site's per-problem completion badges (not just video-inclusive "% complete", and not just note-file counts) for every course listed above. Two exceptions: **DP Level 1** (accordion not fully expanded, likely undercounted) and **Square Root Decomposition** (no problems detected on this pass — needs a manual check).*

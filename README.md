@@ -204,6 +204,6 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 
 ---
 
-**Total solved: 152** (Phase 1: 50 · Phase 2: 25 · Phase 3: 39 · Phase 5: 39)
+**Total solved: 153** (Phase 1: 50 · Phase 2: 25 · Phase 3: 39 · Phase 5: 39)
 
 Counts reflect files in this vault, not the platform's "% complete" (which also counts video lectures).
