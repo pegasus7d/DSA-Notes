@@ -204,6 +204,19 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 
 ---
 
+## Live Sessions
+
+Notes compiled from watched live-session recordings — concepts and techniques rather than single platform problems.
+
+- [STL Foundations 1 & 2](Live-Sessions/STL-Foundations-1.md)
+- [Searching, Sorting and Frequency Mapping](Live-Sessions/Searching-Sorting-and-Frequency-Mapping.md)
+- [Maths](Live-Sessions/Maths.md)
+- [Combinatorial Ideas to Know](Live-Sessions/Combinatorial-Ideas-to-Know.md)
+- [Number Theory Foundations](Live-Sessions/Number-Theory-Foundations.md)
+- [Contribution Technique](Live-Sessions/Contribution-Technique.md)
+
+---
+
 **Total solved: 153** (Phase 1: 50 · Phase 2: 25 · Phase 3: 39 · Phase 5: 39)
 
 Counts reflect files in this vault, not the platform's "% complete" (which also counts video lectures).
