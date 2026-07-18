@@ -68,6 +68,20 @@ a^b = a^(Σ bit_i·2^i) = Π (a^(2^i))^bit_i
 
 i.e. multiply together `a^(2^i)` for every bit position `i` where `bit_i = 1`, skipping positions where the bit is `0`. This is exactly what the while-loop computes incrementally by repeated squaring.
 
+## 2. Modular Multiplicative Inverse — `inv(a, mod)`
+
+Built directly on `power()` above — this is the payoff for learning binary exponentiation first.
+
+```cpp
+long long inv(long long a, long long mod) {
+    return power(a, mod - 2, mod);   // a^(mod-2) % mod == a^(-1) % mod, by Fermat's Little Theorem
+}
+```
+
+**Why this works:** Fermat's Little Theorem — if `p` is prime and `a` is not divisible by `p`, then `a^(p-1) ≡ 1 (mod p)`. Rearranging: `a × a^(p-2) ≡ 1 (mod p)`, so `a^(p-2) mod p` *is* the modular inverse of `a` — the value you'd multiply `a` by to get `1` under the modulus. Only valid when `mod` is prime (e.g. the standard competitive-programming modulus `1e9+7`).
+
+This is used anywhere you need to "divide" under a modulus (since normal division isn't well-defined mod `p`) — e.g. computing `nCr % mod` via precomputed factorials, see [[Combinatorial Ideas to Know]].
+
 ---
 
 *In progress — more math topics from live sessions to be added here as they come up.*

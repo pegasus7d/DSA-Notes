@@ -89,6 +89,62 @@ Now apply the standard formula with `N=25`, `r=5`:
 
 *(This final substitution and computation follows directly from the stated formula — worth double-checking against the recording's actual final board if the exact number matters, since it wasn't independently re-confirmed via a later screenshot.)*
 
+## Computing nCr — Three Approaches
+
+After the worked problems, the session covers how to actually *compute* `nCr` in code, three ways:
+
+### 1. Direct (no modulo, precise value)
+
+Multiplicative formula, derived from `nCr = n! / (r! × (n-r)!)` by cancelling `(n-r)!`:
+
+```
+nCr = [n × (n-1) × ... × (n-r+1)] / r! = Π_{i=0}^{r-1} (n-i) / r!
+```
+
+```cpp
+int ncr(int n, int r) {
+    r = min(r, n - r);
+
+    int ans = 1;                // starts at 1, representing C(n,0)
+    for (int i = 0; i < r; i++) {
+        ans = ans * (n - i);
+        ans = ans / (i + 1);
+    }
+    return ans;
+}
+```
+
+**Why multiply-then-divide immediately (not compute the full numerator, then divide by `r!` at the end)?** Because of the recurrence `C(n, k+1) = C(n, k) × (n-k) / (k+1)` — at every step, `ans` holds a genuine binomial coefficient (`C(n,0)`, then `C(n,1)`, then `C(n,2)`, ...), and each of those divisions is guaranteed to be exact (binomial coefficients are always integers). This keeps intermediate values small and avoids overflow that a naive "compute full numerator product first" approach would risk for large `n`.
+
+### 2. Table Method
+
+Mentioned as a second approach — build a Pascal's-triangle-style DP table using `C(n,r) = C(n-1,r-1) + C(n-1,r)`. (Not captured in detail from the whiteboard in this pass — standard technique, useful when you need many `nCr` values up to a bounded `n`, without division at all.)
+
+### 3. Precompute Factorial (with modulo)
+
+Best for competitive programming where answers are required `% mod` and there are many queries. Relies on [[Maths#2. Modular Multiplicative Inverse — `inv(a, mod)`|inv()]], which itself relies on binary exponentiation — this is the payoff for learning that technique first in the session.
+
+```cpp
+int mod = 1e9 + 7;
+
+int fact[1000100];
+void pre() {
+    fact[0] = 1;
+    for (int i = 1; i <= 1000000; i++) {
+        fact[i] = (fact[i-1] * i) % mod;
+    }
+}
+
+int ncr(int n, int r) {
+    int num = fact[n];
+    int den = (fact[n-r] * fact[r]) % mod;
+    int ans = (num * inv(den, mod)) % mod;
+    return ans;
+}
+```
+
+Factorials are precomputed once in `O(max_n)`, so every subsequent `nCr` query is `O(log mod)` — the cost of the `inv()` call. Since normal division isn't defined under a modulus, `inv(den, mod)` (modular multiplicative inverse, via Fermat's Little Theorem) stands in for dividing by `den`.
+
 ---
 
 *Note compiled from whiteboard screenshots taken at intervals while watching the recording. Session in progress — additional topics to be appended as captured.*
