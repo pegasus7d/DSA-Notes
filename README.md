@@ -214,6 +214,7 @@ Notes compiled from watched live-session recordings — concepts and techniques 
 - [Combinatorial Ideas to Know](Live-Sessions/Combinatorial-Ideas-to-Know.md)
 - [Number Theory Foundations](Live-Sessions/Number-Theory-Foundations.md)
 - [Contribution Technique](Live-Sessions/Contribution-Technique.md)
+- [More Tools at your Disposal](Live-Sessions/More-Tools-at-your-Disposal.md)
 
 ---
 
