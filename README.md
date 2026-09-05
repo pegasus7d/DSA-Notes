@@ -206,15 +206,19 @@ Segment Trees · String & Trie · **Graph Level 2 (up next: Weighted Union Find 
 
 ## Live Sessions
 
-Notes compiled from watched live-session recordings — concepts and techniques rather than single platform problems.
+Notes compiled from watched live-session recordings — concepts and techniques rather than single platform problems. Consolidated in **[Live Sessions Revamped/](Live%20Sessions%20Revamped/)** (date-prefixed, revision-first). Full catalogue of all 44 sessions in **[Contents.md](Live%20Sessions%20Revamped/Contents.md)**.
 
-- [STL Foundations 1 & 2](Live-Sessions/STL-Foundations-1.md)
-- [Searching, Sorting and Frequency Mapping](Live-Sessions/Searching-Sorting-and-Frequency-Mapping.md)
-- [Maths](Live-Sessions/Maths.md)
-- [Combinatorial Ideas to Know](Live-Sessions/Combinatorial-Ideas-to-Know.md)
-- [Number Theory Foundations](Live-Sessions/Number-Theory-Foundations.md)
-- [Contribution Technique](Live-Sessions/Contribution-Technique.md)
-- [More Tools at your Disposal](Live-Sessions/More-Tools-at-your-Disposal.md)
+Notes written (9 of 44, chronological):
+
+- [Searching, Sorting and Frequency Mapping](Live%20Sessions%20Revamped/2026-06-07-Searching-Sorting-and-Frequency-Mapping.md) — Jun 7
+- [Combinatorial Ideas to Know](Live%20Sessions%20Revamped/2026-06-13-Combinatorial-Ideas-to-Know.md) — Jun 13
+- [Maths](Live%20Sessions%20Revamped/2026-06-13-Maths.md) — Jun 13
+- [Number Theory Foundations](Live%20Sessions%20Revamped/2026-06-20-Number-Theory-Foundations.md) — Jun 20
+- [STL Foundations 1 & 2](Live%20Sessions%20Revamped/2026-07-06-STL-Foundations-1.md) — Jul 6 & 8
+- [Contribution Technique](Live%20Sessions%20Revamped/2026-07-11-Contribution-Technique.md) — Jul 11
+- [More Tools at your Disposal](Live%20Sessions%20Revamped/2026-07-11-More-Tools-at-your-Disposal.md) — Jul 11
+- [Backtracking Framework](Live%20Sessions%20Revamped/2026-08-25-Backtracking-Framework.md) — Aug 25
+- [Drill Session — Recursion & Backtracking](Live%20Sessions%20Revamped/2026-09-04-Drill-Session-Recursion-Backtracking.md) — Sep 4
 
 ---
 

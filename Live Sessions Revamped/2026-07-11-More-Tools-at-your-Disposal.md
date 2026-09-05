@@ -1,4 +1,5 @@
 ---
+date: 2026-07-11
 tags: [live-session, contribution-technique, hashing, prefix-sums, stl, two-pointers, upper-bound]
 status: Watched
 duration: 01:43:07

@@ -28,10 +28,10 @@ Complete catalogue of **every** AlgoZenith (maang.in) live session, earliest →
 | Date | Time (IST) | Session | Domain | Note |
 |------|-----------|---------|--------|------|
 | Jun 6  | 12:00 PM | [Never Get TLE ever again](https://maang.in/live-sessions/Never-Get-TLE-ever-again-1283) | DSA | ⬜ |
-| Jun 7  | 12:00 PM | [Searching, Sorting and Frequency Mapping](https://maang.in/live-sessions/Searching-Sorting-and-Frequency-Mapping-1284) | DSA | ✅ [[Searching-Sorting-and-Frequency-Mapping]] |
-| Jun 13 | 12:00 PM | [Modulo Arithmetic](https://maang.in/live-sessions/Modulo-Arithmetic-1288) | Math | ⬜ (overlaps [[Maths]] — see note ¹) |
-| Jun 13 | 6:00 PM  | [Combinatorial Ideas to Know](https://maang.in/live-sessions/Combinatorial-Ideas-to-Know-1290) | Math | ✅ [[Combinatorial-Ideas-to-Know]] · [[Maths]] |
-| Jun 20 | 6:00 PM  | [Number Theory Foundations](https://maang.in/live-sessions/Number-Theory-Foundations-1302) | Math | ✅ [[Number-Theory-Foundations]] |
+| Jun 7  | 12:00 PM | [Searching, Sorting and Frequency Mapping](https://maang.in/live-sessions/Searching-Sorting-and-Frequency-Mapping-1284) | DSA | ✅ [[2026-06-07-Searching-Sorting-and-Frequency-Mapping]] |
+| Jun 13 | 12:00 PM | [Modulo Arithmetic](https://maang.in/live-sessions/Modulo-Arithmetic-1288) | Math | ⬜ (overlaps [[2026-06-13-Maths]] — see note ¹) |
+| Jun 13 | 6:00 PM  | [Combinatorial Ideas to Know](https://maang.in/live-sessions/Combinatorial-Ideas-to-Know-1290) | Math | ✅ [[2026-06-13-Combinatorial-Ideas-to-Know]] · [[2026-06-13-Maths]] |
+| Jun 20 | 6:00 PM  | [Number Theory Foundations](https://maang.in/live-sessions/Number-Theory-Foundations-1302) | Math | ✅ [[2026-06-20-Number-Theory-Foundations]] |
 | Jun 21 | 6:00 PM  | [Phase 0 Drill Session](https://maang.in/live-sessions/Phase-0-Drill-Session-1305) | Math | ⬜ |
 | Jun 26 | 9:00 PM  | [Doubt session: Day 0-10](https://maang.in/live-sessions/Doubt-session-Day-010-1315) | DSA | ⬜ |
 | Jun 30 | 9:00 PM  | [Contest Discussion](https://maang.in/live-sessions/Contest-Discussion-1320) | DSA | ⬜ |
@@ -41,10 +41,10 @@ Complete catalogue of **every** AlgoZenith (maang.in) live session, earliest →
 | Date | Time (IST) | Session | Domain | Note |
 |------|-----------|---------|--------|------|
 | Jul 3  | 9:00 PM  | [Doubt session: Phase 0](https://maang.in/live-sessions/Doubt-session-Phase-0-1321) | DSA | ⬜ |
-| Jul 6  | 9:00 PM  | [STL Foundations 1](https://maang.in/live-sessions/STL-Foundations-1-1322) | STL | ✅ [[STL-Foundations-1]] |
-| Jul 8  | 9:00 PM  | [STL Foundations 2](https://maang.in/live-sessions/STL-Foundations-2-1323) | STL | ✅ [[STL-Foundations-1]] (combined note) |
-| Jul 11 | 2:30 PM  | [Contribution Technique](https://maang.in/live-sessions/Contribution-Technique-1326) | STL | ✅ [[Contribution-Technique]] |
-| Jul 11 | 8:30 PM  | [More Tools at your Disposal](https://maang.in/live-sessions/More-Tools-at-your-Disposal-1328) | STL | ✅ [[More-Tools-at-your-Disposal]] |
+| Jul 6  | 9:00 PM  | [STL Foundations 1](https://maang.in/live-sessions/STL-Foundations-1-1322) | STL | ✅ [[2026-07-06-STL-Foundations-1]] |
+| Jul 8  | 9:00 PM  | [STL Foundations 2](https://maang.in/live-sessions/STL-Foundations-2-1323) | STL | ✅ [[2026-07-06-STL-Foundations-1]] (combined note) |
+| Jul 11 | 2:30 PM  | [Contribution Technique](https://maang.in/live-sessions/Contribution-Technique-1326) | STL | ✅ [[2026-07-11-Contribution-Technique]] |
+| Jul 11 | 8:30 PM  | [More Tools at your Disposal](https://maang.in/live-sessions/More-Tools-at-your-Disposal-1328) | STL | ✅ [[2026-07-11-More-Tools-at-your-Disposal]] |
 | Jul 17 | 9:00 PM  | [Doubt session](https://maang.in/live-sessions/Doubt-session-1339) | DSA | ⬜ |
 | Jul 18 | 2:30 PM  | [Some Classical Greedy Ideas](https://maang.in/live-sessions/Some-Classical-Greedy-Ideas-1342) | Greedy | ⬜ |
 | Jul 18 | 8:30 PM  | [Sweep on array and Line Idea](https://maang.in/live-sessions/Sweep-on-array-and-Line-Idea-1344) | Sweepline | ⬜ |
@@ -113,13 +113,13 @@ A 9-session system-design series, in order (the Aug 23 mock interview explicitly
 
 ## Notes with vault coverage (9 of 44)
 
-1. **Searching, Sorting and Frequency Mapping** (Jun 7) → [[Searching-Sorting-and-Frequency-Mapping]]
-2. **Combinatorial Ideas to Know** (Jun 13) → [[Combinatorial-Ideas-to-Know]]
-3. **Maths** (from the Jun 13 combinatorics recording) → [[Maths]]
-4. **Number Theory Foundations** (Jun 20) → [[Number-Theory-Foundations]]
-5. **STL Foundations 1 & 2** (Jul 6 & Jul 8, combined) → [[STL-Foundations-1]]
-6. **Contribution Technique** (Jul 11) → [[Contribution-Technique]]
-7. **More Tools at your Disposal** (Jul 11) → [[More-Tools-at-your-Disposal]]
+1. **Searching, Sorting and Frequency Mapping** (Jun 7) → [[2026-06-07-Searching-Sorting-and-Frequency-Mapping]]
+2. **Combinatorial Ideas to Know** (Jun 13) → [[2026-06-13-Combinatorial-Ideas-to-Know]]
+3. **Maths** (from the Jun 13 combinatorics recording) → [[2026-06-13-Maths]]
+4. **Number Theory Foundations** (Jun 20) → [[2026-06-20-Number-Theory-Foundations]]
+5. **STL Foundations 1 & 2** (Jul 6 & Jul 8, combined) → [[2026-07-06-STL-Foundations-1]]
+6. **Contribution Technique** (Jul 11) → [[2026-07-11-Contribution-Technique]]
+7. **More Tools at your Disposal** (Jul 11) → [[2026-07-11-More-Tools-at-your-Disposal]]
 8. **Backtracking Framework** (Aug 25) → [[2026-08-25-Backtracking-Framework]] — *LCC MD framework; **all 4 matrix cells** coded & verified — Subsets (2ⁿ) & Permutations (N!) × Distinct/Non-distinct*
 
 ¹ **Maths / Modulo Arithmetic ambiguity:** the `Maths` note's frontmatter sources it to the **Combinatorial Ideas to Know** recording (id 1290), whose opening covered modular-exponentiation prerequisite math. There is *also* a separate **Modulo Arithmetic** session (id 1288, Jun 13, 12:00 PM) on the same day. Worth confirming which recording the `Maths` note's content actually came from.

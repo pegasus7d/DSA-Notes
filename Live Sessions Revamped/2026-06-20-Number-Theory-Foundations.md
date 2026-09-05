@@ -1,4 +1,5 @@
 ---
+date: 2026-06-20
 tags: [live-session, number-theory, gcd, lcm, sieve, primes, divisors, spf]
 status: In Progress
 source: https://maang.in/live-sessions/Number-Theory-Foundations-1302
@@ -59,7 +60,7 @@ Verified with test case `[8, 24, 10]` → `gcd = 2`, `lcm = 120` (`lcm(8,24)=24`
 
 **`gcd(a % m, b % m)` is WRONG** — do not use it as a shortcut for computing `gcd`/`lcm` under a modulus. Reducing values mod `m` first destroys the actual number-theoretic structure GCD depends on; the GCD of the reduced residues has no reliable relationship to the true GCD of the original numbers.
 
-The correct approach: compute the real (unreduced) `gcd(a,b)` first, then apply the modulus carefully to the final `a × b` product — likely via the modular inverse (`inv()`, see [[Maths]]) for the division-by-gcd step, since normal division isn't valid under a modulus. *(The board was mid-derivation of the exact corrected formula when this was captured — worth re-checking the recording for the final form if you need it precisely.)*
+The correct approach: compute the real (unreduced) `gcd(a,b)` first, then apply the modulus carefully to the final `a × b` product — likely via the modular inverse (`inv()`, see [[2026-06-13-Maths]]) for the division-by-gcd step, since normal division isn't valid under a modulus. *(The board was mid-derivation of the exact corrected formula when this was captured — worth re-checking the recording for the final form if you need it precisely.)*
 
 ## 3. Divisors of a Single Number — `O(√x)`
 

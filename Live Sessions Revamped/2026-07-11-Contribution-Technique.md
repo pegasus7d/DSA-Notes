@@ -1,4 +1,5 @@
 ---
+date: 2026-07-11
 tags: [live-session, contribution-technique, dp, kadane]
 status: In Progress
 source: https://maang.in/live-sessions/Contribution-Technique-1326

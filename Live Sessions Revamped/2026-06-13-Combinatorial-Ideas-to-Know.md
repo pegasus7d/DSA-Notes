@@ -1,4 +1,5 @@
 ---
+date: 2026-06-13
 tags: [live-session, combinatorics, stars-and-bars, permutations, committees]
 status: In Progress
 source: https://maang.in/live-sessions/Combinatorial-Ideas-to-Know-1290
@@ -6,7 +7,7 @@ source: https://maang.in/live-sessions/Combinatorial-Ideas-to-Know-1290
 
 # Combinatorial Ideas to Know
 
-Note: this session opened with modular exponentiation as prerequisite math — that content lives in [[Maths]] instead, since it's number theory rather than combinatorics proper.
+Note: this session opened with modular exponentiation as prerequisite math — that content lives in [[2026-06-13-Maths]] instead, since it's number theory rather than combinatorics proper.
 
 ## Problem 1 — Total minus Invalid
 
@@ -124,7 +125,7 @@ Mentioned as a second approach — build a Pascal's-triangle-style DP table usin
 
 ### 3. Precompute Factorial (with modulo)
 
-Best for competitive programming where answers are required `% mod` and there are many queries. Relies on [[Maths#2. Modular Multiplicative Inverse — `inv(a, mod)`|inv()]], which itself relies on binary exponentiation — this is the payoff for learning that technique first in the session.
+Best for competitive programming where answers are required `% mod` and there are many queries. Relies on [[2026-06-13-Maths#2. Modular Multiplicative Inverse — `inv(a, mod)`|inv()]], which itself relies on binary exponentiation — this is the payoff for learning that technique first in the session.
 
 ```cpp
 long long mod = 1e9 + 7;

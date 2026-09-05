@@ -1,4 +1,5 @@
 ---
+date: 2026-07-06
 tags: [live-session, stl, pair, vector, stack, queue, deque, set, multiset, pointers, map, priority-queue]
 status: Watched
 duration: 01:50:45
