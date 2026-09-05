@@ -302,8 +302,10 @@ Same **Take/Not-Take** shape as Problem 3, but the "used set" is now a **count b
 - **L — Level** = index into `words`
 - **C — Choice** = **Take / Not-Take** `words[level]`
 - **C — Check** = `canForm` — enough of each letter left (`need[i] <= cnt[i]`). *Check gates the Move.*
-- **M — Move** = spend the word's letters (`cnt--`) → recurse → restore (`cnt++`)
+- **M — Move** = spend letters + add score (`cnt--`, `curScore += add`) → recurse → **revert both** (`curScore -= add`, `cnt++`)
 - **D — Decide** = `ans = max(ans, curScore)` at **every** node (any subset of words is valid)
+
+> `curScore` is kept as a **global accumulator** (not a function parameter): add it on the way in, subtract it on the way out — the same change→recurse→revert as the letters. (Passing it as `rec(level, curScore+add)` also works — the value auto-restores when the call returns — but the global+revert form is symmetric with the rest of the state.)
 
 ### Solution
 
@@ -315,7 +317,7 @@ int n;
 vector<string> words;
 int sc[26];        // score of each letter
 int cnt[26];       // remaining available letters (the budget)
-int ans;
+int curScore, ans; // running score along the current path
 
 bool canForm(const string& w){        // C — Check: enough letters?
     int need[26] = {0};
@@ -325,24 +327,27 @@ bool canForm(const string& w){        // C — Check: enough letters?
 }
 int wordScore(const string& w){ int s = 0; for(char c : w) s += sc[c - 'a']; return s; }
 
-void rec(int level, int curScore){    // L — Level = index into words
+void rec(int level){                  // L — Level = index into words
     ans = max(ans, curScore);         // D — max score at every node
     if(level == n) return;            // base
 
     // C — Choice: Take / Not-Take words[level]
     if(canForm(words[level])){                          // CHECK first (gates the Move)
+        int add = wordScore(words[level]);              // this word's score (compute once)
         for(char c : words[level]) cnt[c - 'a']--;      // M — spend its letters
-        rec(level + 1, curScore + wordScore(words[level]));   // recurse
-        for(char c : words[level]) cnt[c - 'a']++;      //     restore (backtrack)
+        curScore += add;                                //     add its score
+        rec(level + 1);                                 //     recurse
+        curScore -= add;                                //     revert score   (backtrack)
+        for(char c : words[level]) cnt[c - 'a']++;      //     restore letters (backtrack)
     }
-    rec(level + 1, curScore);         // NOT-TAKE
+    rec(level + 1);                   // NOT-TAKE
 }
 
 int maxScoreWords(vector<string>& w, vector<char>& letters, vector<int>& score){
     words = w; n = w.size();
     for(int i = 0; i < 26; i++){ sc[i] = score[i]; cnt[i] = 0; }
     for(char c : letters) cnt[c - 'a']++;      // build the letter budget
-    ans = 0; rec(0, 0);
+    curScore = 0; ans = 0; rec(0);
     return ans;
 }
 
