@@ -415,8 +415,8 @@ vector<string> words;
 string result;
 vector<char> letters;      // distinct letters = the "positions" to fill (like §5)
 int mp[128];               // letter -> digit
-bool usedDigit[10];        // taken digits  (= taken[] from §5)
-bool isLead[128];          // letter that can't be 0
+set<int>  usedDigit;       // taken digits (self-clearing; insert/erase = do/undo)  (= taken[] from §5)
+set<char> leading;         // leading letters that can't be 0 (self-clearing)
 bool solved;
 
 bool checkSum(){                       // Σ words == result ?
@@ -433,11 +433,11 @@ void rec(int level){                   // L — Level = which letter   (same sha
         return;
     }
     char c = letters[level];
-    for(int d = 0; d <= 9; d++){                          // C — Choice: a digit
-        if(!usedDigit[d] && !(d == 0 && isLead[(int)c])){ // C — Check: unused digit + no leading zero
-            usedDigit[d] = true; mp[(int)c] = d;          // M — assign  (do)
-            rec(level + 1);                               //     recurse (try)
-            usedDigit[d] = false;                         //     revert  (undo)
+    for(int d = 0; d <= 9; d++){                                   // C — Choice: a digit
+        if(!usedDigit.count(d) && !(d == 0 && leading.count(c))){  // C — Check: unused + no leading zero
+            usedDigit.insert(d); mp[(int)c] = d;                   // M — assign (do)
+            rec(level + 1);                                        //     recurse (try)
+            usedDigit.erase(d);                                    //     revert (undo)
         }
     }
 }
@@ -449,10 +449,10 @@ bool isSolvable(vector<string>& w, string r){
     s.insert(r.begin(), r.end());
     if((int)s.size() > 10) return false;         // PRUNE: >10 letters -> impossible
     letters.assign(s.begin(), s.end());
-    memset(isLead, 0, sizeof(isLead));
-    for(auto& x : w) if(x.size() > 1) isLead[(int)x[0]] = true;
-    if(r.size() > 1) isLead[(int)r[0]] = true;
-    memset(usedDigit, 0, sizeof(usedDigit));
+    leading.clear();                             // clean reset — no memset needed
+    for(auto& x : w) if(x.size() > 1) leading.insert(x[0]);
+    if(r.size() > 1) leading.insert(r[0]);
+    usedDigit.clear();
     solved = false;
     rec(0);
     return solved;
