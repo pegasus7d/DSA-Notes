@@ -137,7 +137,7 @@ The state you recurse on is now a **cell**, so the "level" is a coordinate pair 
 | **L — Level** | the cell `(x, y)` you're standing on |
 | **C — Choice** | the **4 directions** (`dx/dy`) |
 | **C — Check** | neighbor in bounds, gold `> 0`, not visited |
-| **M — Move** | block the cell (`g=0`) → recurse → restore (`g=gold`) — change→recurse→undo |
+| **M — Move** | block cell + add gold (`g=0`, `collected += gold`) → recurse → revert both (`collected -= gold`, `g=gold`) |
 | **D — Decide** | `ans = max(ans, collected)` at **every** cell — you may stop anywhere |
 
 **Same "Decide at every node" as Problem 1:** because you can **stop on any cell**, every cell you stand on is a candidate answer — so you update `ans` at every node (here `max`, there `count`), not only at a leaf. Visited-tracking is done by temporarily setting the cell to `0` (and restoring it) — the grid version of `taken[]` / count-decrement. You also **start from every gold cell**.
@@ -150,11 +150,11 @@ using namespace std;
 
 int m, n;
 vector<vector<int>> g;
-int ans;
+int ans, collected;             // collected = running gold on the current path
 int dx[4] = {-1, 1, 0, 0};      // up, down, left, right
 int dy[4] = { 0, 0,-1, 1};
 
-void rec(int x, int y, int collected){       // L — Level = cell (x, y)
+void rec(int x, int y){                       // L — Level = cell (x, y)
     // D — Decide: you may STOP on any cell, so this path total is a candidate
     ans = max(ans, collected);
 
@@ -163,8 +163,10 @@ void rec(int x, int y, int collected){       // L — Level = cell (x, y)
         if(nx >= 0 && nx < m && ny >= 0 && ny < n && g[nx][ny] > 0){   // C — Check
             int gold = g[nx][ny];
             g[nx][ny] = 0;                            // M — mark visited (change)
-            rec(nx, ny, collected + gold);            //     recurse
-            g[nx][ny] = gold;                         //     restore (backtrack)
+            collected += gold;                        //     add gold
+            rec(nx, ny);                              //     recurse
+            collected -= gold;                        //     revert gold  (backtrack)
+            g[nx][ny] = gold;                         //     restore cell (backtrack)
         }
     }
 }
@@ -176,7 +178,8 @@ int getMaximumGold(){
             if(g[x][y] > 0){                          // you may START on any gold cell
                 int gold = g[x][y];
                 g[x][y] = 0;
-                rec(x, y, gold);
+                collected = gold;                     // start the path with this cell's gold
+                rec(x, y);
                 g[x][y] = gold;
             }
     return ans;
