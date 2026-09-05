@@ -433,12 +433,12 @@ void rec(int level){                   // L — Level = which letter   (same sha
         return;
     }
     char c = letters[level];
-    for(int d = 0; d <= 9; d++){                 // C — Choice: a digit
-        if(usedDigit[d]) continue;               // C — Check: digit unused
-        if(d == 0 && isLead[(int)c]) continue;   // C — Check: no leading zero
-        usedDigit[d] = true; mp[(int)c] = d;     // M — assign  (do)
-        rec(level + 1);                          //     recurse (try)
-        usedDigit[d] = false;                    //     revert  (undo)
+    for(int d = 0; d <= 9; d++){                          // C — Choice: a digit
+        if(!usedDigit[d] && !(d == 0 && isLead[(int)c])){ // C — Check: unused digit + no leading zero
+            usedDigit[d] = true; mp[(int)c] = d;          // M — assign  (do)
+            rec(level + 1);                               //     recurse (try)
+            usedDigit[d] = false;                         //     revert  (undo)
+        }
     }
 }
 
