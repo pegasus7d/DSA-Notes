@@ -403,7 +403,7 @@ Assigning **distinct digits to distinct letters is a permutation** — so this i
 
 **Two prunings (both in the code):**
 1. **Decline early** — more than **10 distinct letters** can't fit 10 digits → `return false` before recursing.
-2. **`bool` short-circuit** — it's a *yes/no* problem, so `rec` returns `bool`; the first valid assignment `return true`s and abandons the rest.
+2. **`solved` flag short-circuit** — it's a *yes/no* problem, so a global `solved` is set at the first valid assignment; `if(solved) return;` at the top of `rec` then abandons the rest of the search.
 
 ### Solution
 
@@ -413,33 +413,33 @@ using namespace std;
 
 vector<string> words;
 string result;
-vector<char> letters;     // distinct letters to assign
-set<char> leading;        // first letter of a multi-char word/result -> can't be 0
-int mp[128];              // letter -> digit
-bool usedDigit[10];       // which digits are taken  (= the taken[] from §5)
+vector<char> letters;      // distinct letters = the "positions" to fill (like §5)
+int mp[128];               // letter -> digit
+bool usedDigit[10];        // taken digits  (= taken[] from §5)
+bool isLead[128];          // letter that can't be 0
+bool solved;
 
-long long val(const string& s){          // decode a word using current assignment
-    long long v = 0;
-    for(char c : s) v = v * 10 + mp[(int)c];
-    return v;
-}
-bool check(){                            // D — Σ words == result ?
+bool checkSum(){                       // Σ words == result ?
     long long sum = 0;
-    for(auto& w : words) sum += val(w);
-    return sum == val(result);
+    for(auto& w : words){ long long v = 0; for(char c : w) v = v*10 + mp[(int)c]; sum += v; }
+    long long r = 0; for(char c : result) r = r*10 + mp[(int)c];
+    return sum == r;
 }
 
-bool rec(int idx){                       // L — Level = which distinct letter
-    if(idx == (int)letters.size()) return check();   // all assigned -> verify
-    char c = letters[idx];
-    for(int d = 0; d <= 9; d++){         // C — Choice: a digit
-        if(usedDigit[d]) continue;                    // Check: digit unused (= taken[])
-        if(d == 0 && leading.count(c)) continue;      // Check: no leading zero
-        usedDigit[d] = true; mp[(int)c] = d;          // DO  — assign digit d to letter c
-        if(rec(idx + 1)) return true;                 // TRY — recurse; stop at first solution
-        usedDigit[d] = false;                         // undo — revert (backtrack)
+void rec(int level){                   // L — Level = which letter   (same shape as §5!)
+    if(solved) return;                 // prune: already found one
+    if(level == (int)letters.size()){  // D — Decide: all assigned -> verify the sum
+        if(checkSum()) solved = true;
+        return;
     }
-    return false;
+    char c = letters[level];
+    for(int d = 0; d <= 9; d++){                 // C — Choice: a digit
+        if(usedDigit[d]) continue;               // C — Check: digit unused
+        if(d == 0 && isLead[(int)c]) continue;   // C — Check: no leading zero
+        usedDigit[d] = true; mp[(int)c] = d;     // M — assign  (do)
+        rec(level + 1);                          //     recurse (try)
+        usedDigit[d] = false;                    //     revert  (undo)
+    }
 }
 
 bool isSolvable(vector<string>& w, string r){
@@ -447,13 +447,15 @@ bool isSolvable(vector<string>& w, string r){
     set<char> s;
     for(auto& x : w) s.insert(x.begin(), x.end());
     s.insert(r.begin(), r.end());
-    if((int)s.size() > 10) return false;              // PRUNE: >10 letters -> impossible
+    if((int)s.size() > 10) return false;         // PRUNE: >10 letters -> impossible
     letters.assign(s.begin(), s.end());
-    leading.clear();
-    for(auto& x : w) if(x.size() > 1) leading.insert(x[0]);
-    if(r.size() > 1) leading.insert(r[0]);
+    memset(isLead, 0, sizeof(isLead));
+    for(auto& x : w) if(x.size() > 1) isLead[(int)x[0]] = true;
+    if(r.size() > 1) isLead[(int)r[0]] = true;
     memset(usedDigit, 0, sizeof(usedDigit));
-    return rec(0);
+    solved = false;
+    rec(0);
+    return solved;
 }
 
 int main(){
