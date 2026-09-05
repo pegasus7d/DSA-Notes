@@ -14,8 +14,11 @@ Practice problems applying the [[2026-08-25-Backtracking-Framework|LCC MD backtr
 
 1. **Letter Tile Possibilities** (LC 1079) — *count "permutations of all subset sizes"* → build arrangements tile-by-tile, **count every non-empty node**.
 2. **Path with Maximum Gold** (LC 1219) — grid backtracking, **Level = `(x,y)`**, Choice = 4 directions, Move = block cell (`=0`) → recurse → restore, **Decide = `max` at every cell** (you may stop anywhere).
+3. **Max Length of Concatenated String with Unique Chars** (LC 1239) — **Take/Not-Take subsets** + a "no repeated letter" check via a `set<char> used`, **Decide = `max` length at every node**.
 
-**Shared idea across both:** *you may stop anytime → Decide at **every** node* (Problem 1 counts, Problem 2 takes max).
+**Shared idea across all:** *you may stop anytime → Decide at **every** node* (P1 counts, P2 & P3 take max).
+
+*(LC 1238 Circular Permutation was in the drill but skipped here — it's a Gray-code formula `start ^ i ^ (i>>1)`, not a backtracking problem.)*
 
 ---
 
@@ -194,4 +197,87 @@ int main(){
 
 ---
 
-*Note compiled from whiteboard/IDE screenshots while watching the recording (Problems 1–2 captured from the 1:46:23 session). More problems to be appended as captured. Every solution is a full runnable program, compiled clean and output-verified with `g++-15 -std=gnu++17 -O2 -Wall` using `#include <bits/stdc++.h>`.*
+## 3. Maximum Length of a Concatenated String with Unique Characters — LeetCode 1239 (Medium)
+
+### Question
+Given an array of strings `arr`. A string `s` is the **concatenation of a subsequence** of `arr` that has **all unique characters**. Return the **maximum possible length** of `s`.
+
+### Examples
+| Input | Output |
+|-------|--------|
+| `["un","iq","ue"]` | `4` — `"uniq"` or `"ique"` (`"unique"` invalid, `u` repeats) |
+| `["cha","r","act","ers"]` | `6` — `"acters"` / `"cheers"` |
+| `["abcdefghijklmnopqrstuvwxyz"]` | `26` |
+
+### Logic — Take/Not-Take subsets + uniqueness check
+
+It's **§4 Subsets (Take / Not-Take)** with a validity check and maximize:
+- **L — Level** = index into `arr` (which string to decide)
+- **C — Choice** = **Take** or **Not-Take** `arr[level]`
+- **C — Check** = if taking, the string has **no internal duplicate** letter **and** shares **no letter with those already used**
+- **M — Move** = add its letters to a `set<char> used`, recurse, then remove them (change→recurse→revert)
+- **D — Decide** = `ans = max(ans, curLen)` at **every** node (any valid subset counts — stop anytime)
+
+**Two sets, two jobs:** `used` (global) = letters from strings already taken on this path (checks cross-string clashes; reverted on backtrack); `seen` (local in `canTake`) = letters inside the *current* string (checks its own internal duplicate).
+
+### Solution
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n;
+vector<string> arr;
+set<char> used;      // the letters used so far  (readable alt to a 26-bit mask)
+int curLen, ans;
+
+// can we TAKE this string?  (no internal dup, and no letter already in `used`)
+bool canTake(const string& s){          // C — Check
+    set<char> seen;
+    for(char c : s){
+        if(seen.count(c)) return false;   // internal duplicate letter
+        if(used.count(c)) return false;   // clashes with letters already used
+        seen.insert(c);
+    }
+    return true;
+}
+
+void rec(int level){                    // L — Level = index into arr
+    ans = max(ans, curLen);             // D — Decide: update max at every node
+    if(level == n) return;              // base
+
+    // C — Choice: Take / Not-Take
+    if(canTake(arr[level])){            // TAKE
+        for(char c : arr[level]) used.insert(c);   // M — add letters to the set
+        curLen += (int)arr[level].size();
+        rec(level + 1);                            //     recurse
+        for(char c : arr[level]) used.erase(c);    //     revert (remove them)
+        curLen -= (int)arr[level].size();
+    }
+    rec(level + 1);                     // NOT-TAKE
+}
+
+int maxLength(vector<string>& a){
+    arr = a; n = a.size(); used.clear(); curLen = 0; ans = 0;
+    rec(0);
+    return ans;
+}
+
+int main(){
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    int k; cin >> k;                    // number of strings
+    vector<string> a(k);
+    for(auto &s : a) cin >> s;
+    cout << maxLength(a) << "\n";
+    return 0;
+}
+```
+
+**Verified** (`g++-15 -std=gnu++17 -O2 -Wall`, clean): `["un","iq","ue"] → 4`, `["cha","r","act","ers"] → 6`, `[a…z] → 26`, `["aa","bb"] → 0`.
+*(Input: first line `k` = number of strings, then the `k` strings.)*
+
+**Faster alternative:** replace the `set<char>` with a **26-bit `int` mask** — `used & mask` for the clash check, `used |= mask` / `used ^= mask` to add/remove, and precompute each string's mask (marking `-1` if it has an internal duplicate). Same logic, `O(1)` checks.
+
+---
+
+*Note compiled from whiteboard/IDE screenshots while watching the recording (Problems 1–3 captured from the 1:46:23 session; LC 1238 skipped as non-backtracking). More problems to be appended as captured. Every solution is a full runnable program, compiled clean and output-verified with `g++-15 -std=gnu++17 -O2 -Wall` using `#include <bits/stdc++.h>`.*
