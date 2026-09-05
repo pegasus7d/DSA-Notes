@@ -15,8 +15,9 @@ Practice problems applying the [[2026-08-25-Backtracking-Framework|LCC MD backtr
 1. **Letter Tile Possibilities** (LC 1079) — *count "permutations of all subset sizes"* → build arrangements tile-by-tile, **count every non-empty node**.
 2. **Path with Maximum Gold** (LC 1219) — grid backtracking, **Level = `(x,y)`**, Choice = 4 directions, Move = block cell (`=0`) → recurse → restore, **Decide = `max` at every cell** (you may stop anywhere).
 3. **Max Length of Concatenated String with Unique Chars** (LC 1239) — **Take/Not-Take subsets** + a "no repeated letter" check via a `set<char> used`, **Decide = `max` length at every node**.
+4. **Max Score Words Formed by Letters** (LC 1255, Hard) — **Take/Not-Take subsets** over words + a **letter-count budget** `cnt[26]`, **Decide = `max` score at every node**.
 
-**Shared idea across all:** *you may stop anytime → Decide at **every** node* (P1 counts, P2 & P3 take max).
+**Shared idea across all:** *you may stop anytime → Decide at **every** node* (P1 counts, P2/P3/P4 take max). **Check gates the Move:** validate the choice, then apply → recurse → revert.
 
 *(LC 1238 Circular Permutation was in the drill but skipped here — it's a Gray-code formula `start ^ i ^ (i>>1)`, not a backtracking problem.)*
 
@@ -280,4 +281,86 @@ int main(){
 
 ---
 
-*Note compiled from whiteboard/IDE screenshots while watching the recording (Problems 1–3 captured from the 1:46:23 session; LC 1238 skipped as non-backtracking). More problems to be appended as captured. Every solution is a full runnable program, compiled clean and output-verified with `g++-15 -std=gnu++17 -O2 -Wall` using `#include <bits/stdc++.h>`.*
+## 4. Maximum Score Words Formed by Letters — LeetCode 1255 (Hard)
+
+### Question
+Given `words`, a multiset of `letters` (may repeat), and a `score[0..25]` per character. Return the **maximum total score of any valid set of words**, where:
+- each `words[i]` is used **at most once**,
+- each **letter** is used **at most once** (you needn't use all),
+- a word's score = sum of its letters' scores.
+
+### Examples
+| Input | Output |
+|-------|--------|
+| `words=["dog","cat","dad","good"]`, `letters=[a,a,c,d,d,d,g,o,o]`, `a=1,c=9,d=5,g=3,o=2` | `23` (`"dad"`=11 + `"good"`=12) |
+| `words=["xxxz","ax","bx","cx"]`, `letters=[z,a,b,c,x,x,x]`, `a=b=c=4,x=5,z=10` | `27` (`ax+bx+cx`) |
+
+### Logic — Take/Not-Take subsets + a letter-count budget
+
+Same **Take/Not-Take** shape as Problem 3, but the "used set" is now a **count budget** `cnt[26]` (a letter can appear several times), and we maximize **score**.
+
+- **L — Level** = index into `words`
+- **C — Choice** = **Take / Not-Take** `words[level]`
+- **C — Check** = `canForm` — enough of each letter left (`need[i] <= cnt[i]`). *Check gates the Move.*
+- **M — Move** = spend the word's letters (`cnt--`) → recurse → restore (`cnt++`)
+- **D — Decide** = `ans = max(ans, curScore)` at **every** node (any subset of words is valid)
+
+### Solution
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int n;
+vector<string> words;
+int sc[26];        // score of each letter
+int cnt[26];       // remaining available letters (the budget)
+int ans;
+
+bool canForm(const string& w){        // C — Check: enough letters?
+    int need[26] = {0};
+    for(char c : w) need[c - 'a']++;
+    for(int i = 0; i < 26; i++) if(need[i] > cnt[i]) return false;
+    return true;
+}
+int wordScore(const string& w){ int s = 0; for(char c : w) s += sc[c - 'a']; return s; }
+
+void rec(int level, int curScore){    // L — Level = index into words
+    ans = max(ans, curScore);         // D — max score at every node
+    if(level == n) return;            // base
+
+    // C — Choice: Take / Not-Take words[level]
+    if(canForm(words[level])){                          // CHECK first (gates the Move)
+        for(char c : words[level]) cnt[c - 'a']--;      // M — spend its letters
+        rec(level + 1, curScore + wordScore(words[level]));   // recurse
+        for(char c : words[level]) cnt[c - 'a']++;      //     restore (backtrack)
+    }
+    rec(level + 1, curScore);         // NOT-TAKE
+}
+
+int maxScoreWords(vector<string>& w, vector<char>& letters, vector<int>& score){
+    words = w; n = w.size();
+    for(int i = 0; i < 26; i++){ sc[i] = score[i]; cnt[i] = 0; }
+    for(char c : letters) cnt[c - 'a']++;      // build the letter budget
+    ans = 0; rec(0, 0);
+    return ans;
+}
+
+int main(){
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    int nw; cin >> nw;
+    vector<string> w(nw); for(auto& s : w) cin >> s;
+    int nl; cin >> nl;
+    vector<char> letters(nl); for(auto& c : letters) cin >> c;
+    vector<int> score(26); for(auto& x : score) cin >> x;
+    cout << maxScoreWords(w, letters, score) << "\n";
+    return 0;
+}
+```
+
+**Verified** (`g++-15 -std=gnu++17 -O2 -Wall`, clean): Example 1 → `23`, Example 2 → `27`.
+*(Input: `nw` + words, then `nl` + letters, then 26 scores.)*
+
+---
+
+*Note compiled from whiteboard/IDE screenshots while watching the recording (Problems 1–4 captured from the 1:46:23 session; LC 1238 skipped as non-backtracking). More problems to be appended as captured. Every solution is a full runnable program, compiled clean and output-verified with `g++-15 -std=gnu++17 -O2 -Wall` using `#include <bits/stdc++.h>`.*
