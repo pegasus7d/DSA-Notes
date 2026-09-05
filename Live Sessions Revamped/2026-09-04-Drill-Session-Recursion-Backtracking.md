@@ -1,0 +1,197 @@
+---
+tags: [live-session, drill, recursion, backtracking, permutations, subsets]
+status: In Progress
+date: 2026-09-04
+duration: 01:46:23
+source: https://maang.in/live-sessions/Drill-Session-Recursion-Backtracking-1405
+---
+
+# Drill Session — Recursion & Backtracking
+
+Practice problems applying the [[2026-08-25-Backtracking-Framework|LCC MD backtracking framework]]. Each problem: **Question → Example → Logic → Solution** (full runnable code, verified with `g++-15`).
+
+## ⚡ Quick Revision (problems in this drill)
+
+1. **Letter Tile Possibilities** (LC 1079) — *count "permutations of all subset sizes"* → build arrangements tile-by-tile, **count every non-empty node**.
+2. **Path with Maximum Gold** (LC 1219) — grid backtracking, **Level = `(x,y)`**, Choice = 4 directions, Move = block cell (`=0`) → recurse → restore, **Decide = `max` at every cell** (you may stop anywhere).
+
+**Shared idea across both:** *you may stop anytime → Decide at **every** node* (Problem 1 counts, Problem 2 takes max).
+
+---
+
+## 1. Letter Tile Possibilities — LeetCode 1079 (Medium)
+
+### Question
+You have `n` tiles, each with one letter `tiles[i]`. Return the number of **possible non-empty sequences of letters** you can make using the tiles.
+
+### Examples
+| Input | Output |
+|-------|--------|
+| `"AAB"` | `8` → `A, B, AA, AB, BA, AAB, ABA, BAA` |
+| `"AAABBC"` | `188` |
+| `"V"` | `1` |
+
+### Logic — "permutations of all subset sizes"
+
+Build strings by **adding one tile at a time**, and **count every non-empty string** you pass through.
+
+- **Order matters** (`AB` and `BA` are different) → it's arrangements = **permutations**.
+- You may **stop at any length** (use only some tiles) → so you count **partial** strings too, not just full-length ones. That's what makes it *"permutations of all subset sizes"* rather than plain full permutations.
+- **Repeated tiles:** work with each distinct letter's **remaining count** (not tile positions), so "add an A" is one choice no matter which A — this avoids duplicate sequences.
+
+**Tree for `"AB"`** (each node = one sequence; count every node except the empty root):
+
+```
+              ""            (level 0 — empty, don't count)
+            /     \
+         add A    add B
+         "A" ✓    "B" ✓     (level 1)
+          |         |
+         add B    add A
+         "AB" ✓   "BA" ✓    (level 2)
+```
+→ `A, B, AB, BA` = **4**.
+
+Two knobs do all the work:
+- **`level > 0`** → count only **non-empty** strings (skip the empty root).
+- **`count > 0`** → can only add a tile that still has copies left (handles repeats).
+
+> This is exactly the framework's [[2026-08-25-Backtracking-Framework|§7 Permutations × Non-distinct]] (count-decrement), with one change: **count at *every* node** instead of only at the leaf. Leaf-only would give the *full* permutations (`AAB`→3); every-node gives all subset sizes (`AAB`→8).
+
+### Solution
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+map<char,int> freq;                 // letter -> how many tiles of it
+vector<pair<char,int>> valfreq;     // {letter, remaining count}
+int ans;
+string cur;                         // the sequence built so far
+
+// Each call represents ONE sequence: the string currently in `cur`.
+void rec(int level){                // level = length of cur
+    if(level > 0){                  // skip the empty string (level 0)
+        ans++;                      // count this non-empty sequence
+        // cout << cur << "\n";     // <-- UNCOMMENT to print each sequence
+    }
+    for(int ch = 0; ch < (int)valfreq.size(); ch++){   // try every DISTINCT letter
+        if(valfreq[ch].second > 0){                    // only if tiles of it remain
+            cur.push_back(valfreq[ch].first);          // place the letter
+            valfreq[ch].second--;                      // use one tile
+            rec(level + 1);                            // extend the sequence
+            valfreq[ch].second++;                      // put the tile back (backtrack)
+            cur.pop_back();                            // remove the letter (backtrack)
+        }
+    }
+}
+
+int numTilePossibilities(string tiles){
+    freq.clear(); valfreq.clear(); ans = 0; cur.clear();
+    for(char c : tiles) freq[c]++;              // count tiles per letter
+    for(auto v : freq) valfreq.push_back(v);    // -> [{letter, count}, ...]
+    rec(0);
+    return ans;
+}
+
+int main(){
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    string tiles; cin >> tiles;
+    cout << numTilePossibilities(tiles) << "\n";
+    return 0;
+}
+```
+
+**Verified** (`g++-15 -std=gnu++17 -O2 -Wall`, clean): `AAB → 8`, `AAABBC → 188`, `V → 1`.
+Uncomment the `cout` to see the sequences — for `AAB`: `A, AA, AAB, AB, ABA, B, BA, BAA`.
+
+*(We deliberately do **not** use `next_permutation` or a lambda — the count-decrement recursion is cleaner and reuses the framework.)*
+
+---
+
+## 2. Path with Maximum Gold — LeetCode 1219 (Medium)
+
+### Question
+In a gold mine `grid` (`m x n`), each cell holds gold (`0` = empty). Return the **maximum gold you can collect**:
+- standing on a cell collects **all** its gold;
+- move one step **up / down / left / right**;
+- **can't revisit** a cell; **never** step on a `0` cell;
+- you may **start and stop on any cell that has gold**.
+
+### Examples
+| Input | Output |
+|-------|--------|
+| `[[0,6,0],[5,8,7],[0,9,0]]` | `24` (path `9→8→7`) |
+| `[[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]]` | `28` |
+
+### Logic — grid backtracking (same LCC MD, `Level = (x, y)`)
+
+The state you recurse on is now a **cell**, so the "level" is a coordinate pair `(x, y)` instead of a single index.
+
+| LCC MD | Here |
+|--------|------|
+| **L — Level** | the cell `(x, y)` you're standing on |
+| **C — Choice** | the **4 directions** (`dx/dy`) |
+| **C — Check** | neighbor in bounds, gold `> 0`, not visited |
+| **M — Move** | block the cell (`g=0`) → recurse → restore (`g=gold`) — change→recurse→undo |
+| **D — Decide** | `ans = max(ans, collected)` at **every** cell — you may stop anywhere |
+
+**Same "Decide at every node" as Problem 1:** because you can **stop on any cell**, every cell you stand on is a candidate answer — so you update `ans` at every node (here `max`, there `count`), not only at a leaf. Visited-tracking is done by temporarily setting the cell to `0` (and restoring it) — the grid version of `taken[]` / count-decrement. You also **start from every gold cell**.
+
+### Solution
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+int m, n;
+vector<vector<int>> g;
+int ans;
+int dx[4] = {-1, 1, 0, 0};      // up, down, left, right
+int dy[4] = { 0, 0,-1, 1};
+
+void rec(int x, int y, int collected){       // L — Level = cell (x, y)
+    // D — Decide: you may STOP on any cell, so this path total is a candidate
+    ans = max(ans, collected);
+
+    for(int dir = 0; dir < 4; dir++){                 // C — Choice: the 4 directions
+        int nx = x + dx[dir], ny = y + dy[dir];
+        if(nx >= 0 && nx < m && ny >= 0 && ny < n && g[nx][ny] > 0){   // C — Check
+            int gold = g[nx][ny];
+            g[nx][ny] = 0;                            // M — mark visited (change)
+            rec(nx, ny, collected + gold);            //     recurse
+            g[nx][ny] = gold;                         //     restore (backtrack)
+        }
+    }
+}
+
+int getMaximumGold(){
+    ans = 0;
+    for(int x = 0; x < m; x++)
+        for(int y = 0; y < n; y++)
+            if(g[x][y] > 0){                          // you may START on any gold cell
+                int gold = g[x][y];
+                g[x][y] = 0;
+                rec(x, y, gold);
+                g[x][y] = gold;
+            }
+    return ans;
+}
+
+int main(){
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    cin >> m >> n;                                    // grid dimensions
+    g.assign(m, vector<int>(n));
+    for(int i = 0; i < m; i++)
+        for(int j = 0; j < n; j++) cin >> g[i][j];
+    cout << getMaximumGold() << "\n";
+    return 0;
+}
+```
+
+**Verified** (`g++-15 -std=gnu++17 -O2 -Wall`, clean): `[[0,6,0],[5,8,7],[0,9,0]] → 24`, and `[[1,0,7],[2,0,6],[3,4,5],[0,3,0],[9,0,20]] → 28`.
+*(Input format: first line `m n`, then the grid rows.)*
+
+---
+
+*Note compiled from whiteboard/IDE screenshots while watching the recording (Problems 1–2 captured from the 1:46:23 session). More problems to be appended as captured. Every solution is a full runnable program, compiled clean and output-verified with `g++-15 -std=gnu++17 -O2 -Wall` using `#include <bits/stdc++.h>`.*

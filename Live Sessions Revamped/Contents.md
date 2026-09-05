@@ -5,7 +5,7 @@ sorted_by: date
 source: https://maang.in/live-sessions
 captured: 2026-09-05
 total_sessions: 44
-notes_written: 8
+notes_written: 9
 ---
 
 # Live Sessions — Contents (Chronological)
@@ -81,7 +81,7 @@ Complete catalogue of **every** AlgoZenith (maang.in) live session, earliest →
 | Date | Time (IST) | Session | Domain | Note |
 |------|-----------|---------|--------|------|
 | Sep 3 | 9:00 PM  | [Doubt Session - Binary Search](https://maang.in/live-sessions/Doubt-Session-Binary-Search-1404) | Binary Search | ⬜ |
-| Sep 4 | 8:30 PM  | [Drill Session - Recursion & Backtracking](https://maang.in/live-sessions/Drill-Session-Recursion-Backtracking-1405) | Recursion | ⬜ |
+| Sep 4 | 8:30 PM  | [Drill Session - Recursion & Backtracking](https://maang.in/live-sessions/Drill-Session-Recursion-Backtracking-1405) | Recursion | ✅ [[2026-09-04-Drill-Session-Recursion-Backtracking]] |
 | Sep 6 | 12:00 PM | [Doubt Session - Two Pointer, Recursion & Backtracking](https://maang.in/live-sessions/Doubt-Session-Two-Pointer-Recursion-Backtracking-1407) | Recursion | 🔴 upcoming |
 | Sep 6 | 8:30 PM  | [Mentor Session](https://maang.in/live-sessions/Mentor-Session-1406) | Mentor Session | 🔴 upcoming |
 
@@ -111,7 +111,7 @@ A 9-session system-design series, in order (the Aug 23 mock interview explicitly
 
 ---
 
-## Notes with vault coverage (8 of 44)
+## Notes with vault coverage (9 of 44)
 
 1. **Searching, Sorting and Frequency Mapping** (Jun 7) → [[Searching-Sorting-and-Frequency-Mapping]]
 2. **Combinatorial Ideas to Know** (Jun 13) → [[Combinatorial-Ideas-to-Know]]
