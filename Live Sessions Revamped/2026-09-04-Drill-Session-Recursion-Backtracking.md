@@ -16,8 +16,9 @@ Practice problems applying the [[2026-08-25-Backtracking-Framework|LCC MD backtr
 2. **Path with Maximum Gold** (LC 1219) — grid backtracking, **Level = `(x,y)`**, Choice = 4 directions, Move = block cell (`=0`) → recurse → restore, **Decide = `max` at every cell** (you may stop anywhere).
 3. **Max Length of Concatenated String with Unique Chars** (LC 1239) — **Take/Not-Take subsets** + a "no repeated letter" check via a `set<char> used`, **Decide = `max` length at every node**.
 4. **Max Score Words Formed by Letters** (LC 1255, Hard) — **Take/Not-Take subsets** over words + a **letter-count budget** `cnt[26]`, **Decide = `max` score at every node**.
+5. **Verbal Arithmetic Puzzle** (LC 1307, Hard) — it's just **§5 permutations**: assign each letter a **distinct digit** (`usedDigit[10]` = `taken[]`), **Decide at the leaf = check `Σwords == result`**. Prune: >10 letters → impossible; `bool` return stops at first solution.
 
-**Shared idea across all:** *you may stop anytime → Decide at **every** node* (P1 counts, P2/P3/P4 take max). **Check gates the Move:** validate the choice, then apply → recurse → revert.
+**Shared idea across all:** *you may stop anytime → Decide at **every** node* (P1 counts, P2/P3/P4 take max; P5 is a leaf-decision — assign all then verify). **Check gates the Move:** validate the choice, then apply → recurse → revert.
 
 *(LC 1238 Circular Permutation was in the drill but skipped here — it's a Gray-code formula `start ^ i ^ (i>>1)`, not a backtracking problem.)*
 
@@ -371,4 +372,104 @@ int main(){
 
 ---
 
-*Note compiled from whiteboard/IDE screenshots while watching the recording (Problems 1–4 captured from the 1:46:23 session; LC 1238 skipped as non-backtracking). More problems to be appended as captured. Every solution is a full runnable program, compiled clean and output-verified with `g++-15 -std=gnu++17 -O2 -Wall` using `#include <bits/stdc++.h>`.*
+## 5. Verbal Arithmetic Puzzle — LeetCode 1307 (Hard)
+
+### Question
+Given `words` (left side) and `result` (right side). Return `true` if the equation is solvable where: each **character → a digit** (0–9), **distinct characters get distinct digits**, numbers have **no leading zeros**, and **Σ(words) == result**.
+
+### Examples
+| Input | Output |
+|-------|--------|
+| `words=["SEND","MORE"]`, `result="MONEY"` | `true` (`SEND+MORE=MONEY`) |
+| `words=["SIX","SEVEN","SEVEN"]`, `result="TWENTY"` | `true` |
+| `words=["LEET","CODE"]`, `result="POINT"` | `false` |
+
+### Logic — it's just §5 permutations (assign each letter a distinct digit)
+
+Assigning **distinct digits to distinct letters is a permutation** — so this is the **[[2026-08-25-Backtracking-Framework|§5 Permutations × Distinct]]** cell, with letters getting digits:
+
+| §5 Permutations | Verbal Arithmetic |
+|---|---|
+| pick any **unused element** | pick any **unused digit** |
+| `taken[]` | `usedDigit[10]` |
+| Level = position in `sol` | Level = which letter |
+| Decide at leaf: *print* | Decide at leaf: **check `Σwords == result`** |
+
+- **L — Level** = which distinct letter to assign
+- **C — Choice** = a digit `0–9`
+- **C — Check** = `!usedDigit[d]` (each digit once) **+** no leading letter gets `0`
+- **M — Move** = **do** (assign) → **try** (recurse) → **undo** (revert)
+- **D — Decide** = at the leaf (all letters assigned), verify the sum
+
+**Two prunings (both in the code):**
+1. **Decline early** — more than **10 distinct letters** can't fit 10 digits → `return false` before recursing.
+2. **`bool` short-circuit** — it's a *yes/no* problem, so `rec` returns `bool`; the first valid assignment `return true`s and abandons the rest.
+
+### Solution
+
+```cpp
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<string> words;
+string result;
+vector<char> letters;     // distinct letters to assign
+set<char> leading;        // first letter of a multi-char word/result -> can't be 0
+int mp[128];              // letter -> digit
+bool usedDigit[10];       // which digits are taken  (= the taken[] from §5)
+
+long long val(const string& s){          // decode a word using current assignment
+    long long v = 0;
+    for(char c : s) v = v * 10 + mp[(int)c];
+    return v;
+}
+bool check(){                            // D — Σ words == result ?
+    long long sum = 0;
+    for(auto& w : words) sum += val(w);
+    return sum == val(result);
+}
+
+bool rec(int idx){                       // L — Level = which distinct letter
+    if(idx == (int)letters.size()) return check();   // all assigned -> verify
+    char c = letters[idx];
+    for(int d = 0; d <= 9; d++){         // C — Choice: a digit
+        if(usedDigit[d]) continue;                    // Check: digit unused (= taken[])
+        if(d == 0 && leading.count(c)) continue;      // Check: no leading zero
+        usedDigit[d] = true; mp[(int)c] = d;          // DO  — assign digit d to letter c
+        if(rec(idx + 1)) return true;                 // TRY — recurse; stop at first solution
+        usedDigit[d] = false;                         // undo — revert (backtrack)
+    }
+    return false;
+}
+
+bool isSolvable(vector<string>& w, string r){
+    words = w; result = r;
+    set<char> s;
+    for(auto& x : w) s.insert(x.begin(), x.end());
+    s.insert(r.begin(), r.end());
+    if((int)s.size() > 10) return false;              // PRUNE: >10 letters -> impossible
+    letters.assign(s.begin(), s.end());
+    leading.clear();
+    for(auto& x : w) if(x.size() > 1) leading.insert(x[0]);
+    if(r.size() > 1) leading.insert(r[0]);
+    memset(usedDigit, 0, sizeof(usedDigit));
+    return rec(0);
+}
+
+int main(){
+    ios_base::sync_with_stdio(0); cin.tie(0);
+    int nw; cin >> nw;
+    vector<string> w(nw); for(auto& x : w) cin >> x;
+    string r; cin >> r;
+    cout << (isSolvable(w, r) ? "true" : "false") << "\n";
+}
+```
+
+**Verified** (`g++-15 -std=gnu++17 -O2 -Wall`, clean): `SEND+MORE=MONEY → true`, `SIX+SEVEN+SEVEN=TWENTY → true`, `LEET+CODE=POINT → false`.
+*(Input: `nw` + words, then `result`.)*
+
+**Faster alternative (not needed here):** process the addition **column-by-column with carry** (assign letters as you sweep right-to-left, check each column's arithmetic, backtrack the instant one fails). More pruning, but more code — the plain "permutations + verify at the leaf" is clear and fast enough for these constraints.
+
+---
+
+*Note compiled from whiteboard/IDE screenshots while watching the recording (Problems 1–5 captured from the 1:46:23 session; LC 1238 skipped as non-backtracking). More problems to be appended as captured. Every solution is a full runnable program, compiled clean and output-verified with `g++-15 -std=gnu++17 -O2 -Wall` using `#include <bits/stdc++.h>`.*
